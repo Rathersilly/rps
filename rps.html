@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Rock Paper Scissors</title>
+    
+</head>
+<body>
+    <script>
+        const choices = ["Rock", "Paper", "Scissors"];
+        const ROCK = 0;
+        const PAPER = 1;
+        const SCISSORS = 2;
+        function capitalize(string){
+            return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+        }
+
+        function computerPlay() {
+            return choices[(Math.floor(Math.random() * 3))];
+            
+        }
+        function playerPlay() {
+            
+            //let a = prompt("Enter Rock, Paper, or Scissors");
+            while (true) {
+                response = capitalize(prompt("Enter Rock, Paper, or Scissors"));
+                if (choices.includes(response)) {
+                    return response;
+                }
+                else {
+                    alert("FOLLOW INSTRUCTIONS");
+                }
+
+
+
+            }
+
+            //return capitalize(prompt("Enter Rock, Paper, or Scissors"));
+        }
+        function playRound (playerSelection, computerSelection) {
+            difference = choices.indexOf(playerSelection) - choices.indexOf(computerSelection);
+            if (difference === 1 || difference === -2){
+                console.log("You win! " + playerSelection + " beats " + computerSelection + "!")
+            }   else if (difference === 0) {
+                console.log("It's a tie!");
+            }
+                else{
+                    console.log("You lose! " + computerSelection + " beats " + playerSelection + "!")                    
+            }
+            
+            
+        }
+        function game() {
+            let i;
+            for (i = 0; i < 5; ++i) {
+                playerSelection = playerPlay()
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                //playRound(playerPlay(), computerPlay());
+            }
+
+        }
+        //const playerSelection = playerPlay()
+        //const computerSelection = computerPlay();
+        //console.log(playRound(playerSelection, computerSelection));
+        game();
+    </script>
+
+</body>
+
+
+
+</html>
